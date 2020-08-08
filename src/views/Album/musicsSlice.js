@@ -18,15 +18,17 @@ export const musicsSlice = createSlice({
     decrement: (state) => {
       // state.list -= 1;
     },
-    navigateTo: (state, action) => {
-      state.selectedIndex = action.payload;
-      state.selectedMusic = data[action.payload];
-      console.log(data[action.payload], "no kurwa co js");
+    selectMusic: (state, action) => {
+      state = {
+        ...state,
+        selectedIndex: action.payload,
+        selectedMusic: data[action.payload],
+      };
     },
   },
 });
 
-export const { increment, decrement, navigateTo } = musicsSlice.actions;
+export const { increment, decrement, selectMusic } = musicsSlice.actions;
 
 export const actuallyList = (state) => {
   return state.album;
