@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -10,6 +10,7 @@ import SelectedMusic from "../SelectedMusic";
 import "./Slider.scss";
 
 const SimpleSlider = () => {
+  const [state, setState] = useState({ playing: false });
   let sliderRef = useRef(null);
   const { list, selectedMusic } = useSelector(actuallyList);
 
@@ -18,6 +19,10 @@ const SimpleSlider = () => {
   };
   const previous = () => {
     sliderRef.current.slickPrev();
+  };
+
+  const togglePlay = () => {
+    setState({ ...state, playing: !state.playing });
   };
 
   return (
@@ -43,7 +48,12 @@ const SimpleSlider = () => {
         ))}
       </Slider>
       <SelectedMusic {...selectedMusic} />
-      <PlayingConsole next={next} previous={previous} />
+      <PlayingConsole
+        next={next}
+        previous={previous}
+        togglePlay={togglePlay}
+        playing={state.playing}
+      />
     </>
   );
 };

@@ -7,16 +7,35 @@
   .playingConsole__button {
     width: 30px;
     height: 26px;
+    padding: 0;
+    border: none;
+    outline: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
   }
 
   .playingConsole__button--previous {
+    background-image: url("../../../assets/images/previous_ico.svg");
   }
 
   .playingConsole__button--next {
+    background-image: url("../../../assets/images/next_ico.svg");
   }
 
-  .playingConsole__button--play {
+  .playingConsole__togglePlay {
     width: 142px;
     height: 143px;
+    border-radius: 50%;
+  }
+
+  .playingConsole__togglePlay--played {
+    background-position: -58px 50%;
+
+    background-image: url("../../../assets/images/Play_active.png");
+  }
+
+  .playingConsole__togglePlay--stoped {
+    background-image: url("../../../assets/images/Play_inactive.png");
   }
 }
