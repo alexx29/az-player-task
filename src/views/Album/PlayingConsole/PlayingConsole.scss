@@ -1,3 +1,22 @@
 .playingConsole {
   z-index: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  .playingConsole__button {
+    width: 30px;
+    height: 26px;
+  }
+
+  .playingConsole__button--previous {
+  }
+
+  .playingConsole__button--next {
+  }
+
+  .playingConsole__button--play {
+    width: 142px;
+    height: 143px;
+  }
 }

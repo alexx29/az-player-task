@@ -1,27 +1,25 @@
 .SelectedMusic {
+  margin-top: 39px;
+  margin-bottom: 48px;
+  text-align: center;
+
   .SelectedMusic__name {
-    height: 28px;
-    font-family: Gilroy;
+    margin: 0;
     font-size: 36px;
+    height: 28px;
+    line-height: 28px;
     font-weight: 800;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1;
-    letter-spacing: normal;
-    text-align: center;
     color: #ffffff;
+    margin-bottom: 18px;
   }
 
   .SelectedMusic__author {
-    height: 14px;
-    font-family: Gilroy;
+    margin: 0;
     font-size: 18px;
+    height: 14px;
+    line-height: 14px;
     font-weight: 300;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 2;
-    letter-spacing: normal;
-    text-align: center;
     color: #6f729c;
+    text-transform: uppercase;
   }
 }
