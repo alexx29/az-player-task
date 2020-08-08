@@ -3,21 +3,24 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useSelector, useDispatch } from "react-redux";
-import { decrement, increment, actuallyList } from "../musicsSlice";
+import { decrement, increment, actuallyList, navigateTo } from "../musicsSlice";
 import Music from "../MusicCover";
 import PlayingConsole from "../PlayingConsole";
 import SelectedMusic from "../SelectedMusic";
 import "./Slider.scss";
 
 const SimpleSlider = () => {
+  const dispatch = useDispatch();
   const [state, setState] = useState({ playing: false });
   let sliderRef = useRef(null);
   const { list, selectedMusic } = useSelector(actuallyList);
 
   const next = () => {
+    // dispatch(increment());
     sliderRef.current.slickNext();
   };
   const previous = () => {
+    // dispatch(decrement());
     sliderRef.current.slickPrev();
   };
 
@@ -25,26 +28,27 @@ const SimpleSlider = () => {
     setState({ ...state, playing: !state.playing });
   };
 
+  const goTo = (prev, next) => {
+    dispatch(navigateTo(next));
+  };
+
   return (
     <>
       <Slider
         ref={sliderRef}
-        className="center slider"
+        className="center slider variable-width"
         centerMode
         infinite
         speed={500}
         slidesToShow={1}
         slidesToScroll={1}
         variableWidth
+        beforeChange={goTo}
       >
         {list.map((music, i) => (
-          <>
-            <Music
-              key={music.id}
-              img={music.img}
-              selected={selectedMusic.id === music.id}
-            />
-          </>
+          <div style={{ width: 290 }}>
+            <Music img={music.img} />
+          </div>
         ))}
       </Slider>
       <SelectedMusic {...selectedMusic} />

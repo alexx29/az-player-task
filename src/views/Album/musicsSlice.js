@@ -6,21 +6,27 @@ export const musicsSlice = createSlice({
   initialState: {
     list: data,
     selectedMusic: data[0],
+    selectedIndex: 0,
   },
   reducers: {
-    increment: (state) => {
-      state.list += 1;
+    increment: (state, b) => {
+      state.selectedIndex += 1;
+      if (!data[state.selectedIndex]) {
+        state.selectedMusic = data[0];
+      } else state.selectedMusic = data[state.selectedIndex];
     },
     decrement: (state) => {
-      state.list -= 1;
+      // state.list -= 1;
     },
-    incrementByAmount: (state, action) => {
-      state.list += action.payload;
+    navigateTo: (state, action) => {
+      state.selectedIndex = action.payload;
+      state.selectedMusic = data[action.payload];
+      console.log(data[action.payload], "no kurwa co js");
     },
   },
 });
 
-export const { increment, decrement, incrementByAmount } = musicsSlice.actions;
+export const { increment, decrement, navigateTo } = musicsSlice.actions;
 
 export const actuallyList = (state) => {
   return state.album;

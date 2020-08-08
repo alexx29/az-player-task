@@ -5,13 +5,11 @@ import "./MusicCover.scss";
 const MusicCover = ({ img, selected }) => {
   return (
     <>
-      <div className={`MusicCover ${selected ? "MusicCover--selected" : ""}`}>
+      <div className={`MusicCover `}>
         <img className="MusicCover__cover" src={img} alt="" />
-        {selected && (
-          <div className="MusicCover__logo ">
-            <img src={Logo} alt="usertive_logo" />
-          </div>
-        )}
+        <div className="MusicCover__logo">
+          <img src={Logo} alt="usertive_logo" />
+        </div>
       </div>
     </>
   );
