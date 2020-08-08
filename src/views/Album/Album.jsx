@@ -1,9 +1,15 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useSelector, useDispatch } from "react-redux";
-import { decrement, increment, actuallyList, selectMusic } from "./musicsSlice";
+import {
+  actuallyList,
+  changeModeInfinitty,
+  changeModeRandom,
+  nextMusic,
+  previusMusic,
+} from "./musicsSlice";
 import Music from "./MusicCover";
 import MusicConsole from "./MusicConsole";
 import SelectedMusic from "./SelectedMusic";
@@ -12,22 +18,32 @@ import "./Album.scss";
 const Album = () => {
   let sliderRef = useRef(null);
   const dispatch = useDispatch();
-  const { list, selectedMusic } = useSelector(actuallyList);
-  const [state, setState] = useState({ playing: false });
+  const { list, selectedMusic, selectedIndex, random } = useSelector(
+    actuallyList
+  );
+  const [state, setState] = useState({
+    playing: false,
+    selectedIndex,
+  });
 
-  const next = () => {
-    sliderRef.current.slickNext();
-  };
-  const previous = () => {
-    sliderRef.current.slickPrev();
-  };
+  useEffect(() => {
+    if (state.selectedIndex !== selectedIndex) {
+      const different = selectedIndex - state.selectedIndex;
+      const comeBackBegin = different === -(list.length - 1);
+      const comeBackLast = different === list.length - 1;
+      if (different === 1 || comeBackBegin) {
+        sliderRef.current.slickNext();
+      } else if (different === -1 || comeBackLast) {
+        sliderRef.current.slickPrev();
+      } else if (random) {
+        sliderRef.current.slickGoTo(selectedIndex);
+      }
+      setState({ ...state, selectedIndex });
+    }
+  }, [selectedIndex]);
 
   const togglePlay = () => {
     setState({ ...state, playing: !state.playing });
-  };
-
-  const beforeChange = (prev, next) => {
-    dispatch(selectMusic(next));
   };
 
   return (
@@ -39,9 +55,8 @@ const Album = () => {
         infinite
         speed={500}
         slidesToShow={1}
-        slidesToScroll={1}
+        slidesToScroll={2}
         variableWidth
-        beforeChange={beforeChange}
       >
         {list.map((music, i) => (
           <div style={{ width: 290 }}>
@@ -51,8 +66,10 @@ const Album = () => {
       </Slider>
       <SelectedMusic {...selectedMusic} />
       <MusicConsole
-        next={next}
-        previous={previous}
+        next={() => dispatch(nextMusic())}
+        playRandom={() => dispatch(changeModeRandom())}
+        playInfinity={() => dispatch(changeModeInfinitty())}
+        previous={() => dispatch(previusMusic())}
         togglePlay={togglePlay}
         playing={state.playing}
       />

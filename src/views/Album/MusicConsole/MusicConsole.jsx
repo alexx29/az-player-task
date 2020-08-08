@@ -1,12 +1,19 @@
 import React from "react";
 import "./MusicConsole.scss";
 
-const MusicConsole = ({ previous, next, togglePlay, playing }) => {
+const MusicConsole = ({
+  previous,
+  next,
+  togglePlay,
+  playRandom,
+  playInfinity,
+  playing,
+}) => {
   return (
     <div className="MusicConsole">
       <button
         className="MusicConsole__button MusicConsole__button--random"
-        onClick={previous}
+        onClick={playRandom}
       />
       <button
         className="MusicConsole__button MusicConsole__button--previous"
@@ -26,7 +33,7 @@ const MusicConsole = ({ previous, next, togglePlay, playing }) => {
       />
       <button
         className="MusicConsole__button MusicConsole__button--repeat"
-        onClick={previous}
+        onClick={playInfinity}
       />
     </div>
   );

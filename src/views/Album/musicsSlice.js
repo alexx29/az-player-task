@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import data from "../../app/data";
+import getRandomInt from "../../helpers/getRandomInt";
 
 export const musicsSlice = createSlice({
   name: "musics",
@@ -7,28 +8,67 @@ export const musicsSlice = createSlice({
     list: data,
     selectedMusic: data[0],
     selectedIndex: 0,
+    random: false,
+    infinity: false,
   },
   reducers: {
-    increment: (state, b) => {
-      state.selectedIndex += 1;
-      if (!data[state.selectedIndex]) {
-        state.selectedMusic = data[0];
-      } else state.selectedMusic = data[state.selectedIndex];
+    previusMusic: (state) => {
+      if (state.random) {
+        const randomMusic = getRandomInt(state.list.length);
+        state.selectedIndex = randomMusic;
+        state.selectedMusic = state.list[randomMusic];
+      } else {
+        const newIndex = state.selectedIndex - 1;
+        if (state.list[newIndex]) {
+          state.selectedIndex = newIndex;
+          state.selectedMusic = state.list[newIndex];
+        } else {
+          const lastIndex = state.list.length - 1;
+          state.selectedIndex = lastIndex;
+          state.selectedMusic = state.list[lastIndex];
+        }
+      }
     },
-    decrement: (state) => {
-      // state.list -= 1;
+    nextMusic: (state) => {
+      if (state.random) {
+        const randomMusic = getRandomInt(state.list.length);
+        state.selectedIndex = randomMusic;
+        state.selectedMusic = state.list[randomMusic];
+      } else {
+        const newIndex = state.selectedIndex + 1;
+
+        if (state.list[newIndex]) {
+          state.selectedIndex = newIndex;
+          state.selectedMusic = state.list[newIndex];
+        } else {
+          state.selectedIndex = 0;
+          state.selectedMusic = state.list[0];
+        }
+      }
     },
+
     selectMusic: (state, action) => {
-      state = {
-        ...state,
-        selectedIndex: action.payload,
-        selectedMusic: data[action.payload],
-      };
+      state.selectedIndex = action.payload;
+      state.selectedMusic = state.list[action.payload];
+    },
+
+    changeModeInfinitty: (state) => {
+      state.infinity = !state.infinity;
+    },
+
+    changeModeRandom: (state) => {
+      state.random = !state.random;
     },
   },
 });
 
-export const { increment, decrement, selectMusic } = musicsSlice.actions;
+export const {
+  selectMusic,
+  changeModeInfinitty,
+  changeModeRandom,
+  previusMusic,
+  nextMusic,
+} = musicsSlice.actions;
 
 export const actuallyList = (state) => {
   return state.album;
