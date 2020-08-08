@@ -1,12 +1,15 @@
 import React from "react";
-import { Counter } from "./features/counter/Counter";
+import Album from "./views/Album";
+
+import "./App.scss";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Counter />
-      </header>
+      <div className="album">
+        <header className="album__header" />
+        <Album />
+      </div>
     </div>
   );
 }

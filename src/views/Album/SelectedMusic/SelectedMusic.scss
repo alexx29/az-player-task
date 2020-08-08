@@ -1,0 +1,25 @@
+.SelectedMusic {
+  margin-top: 39px;
+  margin-bottom: 48px;
+  text-align: center;
+
+  .SelectedMusic__name {
+    margin: 0;
+    font-size: 36px;
+    height: 28px;
+    line-height: 28px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 18px;
+  }
+
+  .SelectedMusic__author {
+    margin: 0;
+    font-size: 18px;
+    height: 14px;
+    line-height: 14px;
+    font-weight: 300;
+    color: #6f729c;
+    text-transform: uppercase;
+  }
+}
