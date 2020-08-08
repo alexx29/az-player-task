@@ -1,0 +1,34 @@
+.MusicCover {
+  height: 128px;
+  width: 128px;
+  margin: 0 32px;
+  position: relative;
+
+  .MusicCover__cover {
+    height: 100%;
+    width: 100%;
+  }
+
+  .MusicCover__logo {
+    position: absolute;
+    top: calc(50% - 82px / 2);
+    left: calc(50% - 82px / 2);
+    border-radius: 50%;
+    width: 72px;
+    height: 72px;
+    border: solid 5px #755dd5;
+    background-color: #1f1937;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 28px;
+      height: 32px;
+    }
+  }
+}
+
+.MusicCover--selected {
+  width: 320px;
+  height: 320px;
+}

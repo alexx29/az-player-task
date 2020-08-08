@@ -1,0 +1,25 @@
+.album {
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+  position: absolute;
+  background-color: #1f1937;
+
+  .album__header {
+    position: absolute;
+    background-image: url("../../assets/images/bg_image.jpg");
+    display: inline-block;
+    width: 100%;
+    font-size: 0;
+    line-height: 0;
+    vertical-align: middle;
+    background-size: 100%;
+    background-position: 50% 0;
+    background-repeat: no-repeat;
+    opacity: 0.1;
+    height: 100%;
+    mix-blend-mode: luminosity;
+    height: 37%;
+    box-shadow: inset 0px -100px 45px -15px rgba(31, 25, 55, 0.8);
+  }
+}
