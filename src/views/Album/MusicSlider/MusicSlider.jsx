@@ -5,11 +5,15 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { actuallyList } from "../musicsSlice";
 import Music from "../MusicCover";
+import MusicInf from "../MusicInfo";
+
 import "./MusicSlider.scss";
 
 const MusicSlider = () => {
   let sliderRef = useRef(null);
-  const { list, selectedIndex, random } = useSelector(actuallyList);
+  const { list, selectedIndex, random, selectedMusic } = useSelector(
+    actuallyList
+  );
   const [state, setState] = useState({
     selectedIndex,
   });
@@ -31,22 +35,25 @@ const MusicSlider = () => {
   }, [selectedIndex]);
 
   return (
-    <Slider
-      ref={sliderRef}
-      className="center musicSlider variable-width"
-      centerMode
-      infinite
-      speed={500}
-      slidesToShow={1}
-      slidesToScroll={1}
-      variableWidth
-    >
-      {list.map((music, i) => (
-        <div key={music.id + "-cov"} style={{ width: 290 }}>
-          <Music img={music.img} />
-        </div>
-      ))}
-    </Slider>
+    <>
+      <Slider
+        ref={sliderRef}
+        className="center musicSlider variable-width"
+        centerMode
+        infinite
+        speed={500}
+        slidesToShow={1}
+        slidesToScroll={1}
+        variableWidth
+      >
+        {list.map((music, i) => (
+          <div key={music.id + "-cov"} style={{ width: 290 }}>
+            <Music img={music.img} />
+          </div>
+        ))}
+      </Slider>
+      <MusicInf {...selectedMusic} />
+    </>
   );
 };
 
