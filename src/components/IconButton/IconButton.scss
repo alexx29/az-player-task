@@ -1,0 +1,15 @@
+.iconButton {
+  width: 30px;
+  height: 26px;
+  padding: 0;
+  border: none;
+  outline: none;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+}
+
+.iconButton--active {
+  filter: invert(100%) sepia(80%) saturate(800%) hue-rotate(200deg)
+    brightness(100%) contrast(100%);
+}

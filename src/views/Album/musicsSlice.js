@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import data from "../../app/data";
-import getRandomInt from "../../helpers/getRandomInt";
 
 export const musicsSlice = createSlice({
   name: "musics",
@@ -8,42 +7,31 @@ export const musicsSlice = createSlice({
     list: data,
     selectedMusic: data[0],
     selectedIndex: 0,
-    random: false,
-    infinity: false,
+    shuffle: false,
+    repeat: false,
+    playing: false,
   },
   reducers: {
     previusMusic: (state) => {
-      if (state.random) {
-        const randomMusic = getRandomInt(state.list.length);
-        state.selectedIndex = randomMusic;
-        state.selectedMusic = state.list[randomMusic];
+      const newIndex = state.selectedIndex - 1;
+      if (newIndex >= 0) {
+        state.selectedIndex = newIndex;
+        state.selectedMusic = state.list[newIndex];
       } else {
-        const newIndex = state.selectedIndex - 1;
-        if (state.list[newIndex]) {
-          state.selectedIndex = newIndex;
-          state.selectedMusic = state.list[newIndex];
-        } else {
-          const lastIndex = state.list.length - 1;
-          state.selectedIndex = lastIndex;
-          state.selectedMusic = state.list[lastIndex];
-        }
+        const lastIndex = state.list.length - 1;
+        state.selectedIndex = lastIndex;
+        state.selectedMusic = state.list[lastIndex];
       }
     },
-    nextMusic: (state) => {
-      if (state.random) {
-        const randomMusic = getRandomInt(state.list.length);
-        state.selectedIndex = randomMusic;
-        state.selectedMusic = state.list[randomMusic];
-      } else {
-        const newIndex = state.selectedIndex + 1;
 
-        if (state.list[newIndex]) {
-          state.selectedIndex = newIndex;
-          state.selectedMusic = state.list[newIndex];
-        } else {
-          state.selectedIndex = 0;
-          state.selectedMusic = state.list[0];
-        }
+    nextMusic: (state) => {
+      const newIndex = state.selectedIndex + 1;
+      if (newIndex <= state.list.length - 1) {
+        state.selectedIndex = newIndex;
+        state.selectedMusic = state.list[newIndex];
+      } else {
+        state.selectedIndex = 0;
+        state.selectedMusic = state.list[0];
       }
     },
 
@@ -52,22 +40,26 @@ export const musicsSlice = createSlice({
       state.selectedMusic = state.list[action.payload];
     },
 
-    changeModeInfinitty: (state) => {
-      state.infinity = !state.infinity;
+    changeModeRepeat: (state) => {
+      state.repeat = !state.repeat;
     },
 
-    changeModeRandom: (state) => {
-      state.random = !state.random;
+    changeModeShuffle: (state) => {
+      state.shuffle = !state.shuffle;
+    },
+    togglePlayMusic: (state) => {
+      state.playing = !state.playing;
     },
   },
 });
 
 export const {
   selectMusic,
-  changeModeInfinitty,
-  changeModeRandom,
+  changeModeRepeat,
+  changeModeShuffle,
   previusMusic,
   nextMusic,
+  togglePlayMusic,
 } = musicsSlice.actions;
 
 export const actuallyList = (state) => {

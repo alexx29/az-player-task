@@ -1,0 +1,19 @@
+.progressBar {
+  height: 5px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  .progressBar__max {
+    width: 100%;
+    height: 1px;
+    background-color: #00c9b7;
+  }
+  .progressBar__progress {
+    height: 5px;
+    position: absolute;
+    background-color: #00c9b7;
+    border-radius: inherit;
+  }
+}
