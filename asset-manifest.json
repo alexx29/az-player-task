@@ -1,0 +1,36 @@
+{
+  "files": {
+    "main.css": "/az-player-task/static/css/main.ffd6ba8f.chunk.css",
+    "main.js": "/az-player-task/static/js/main.63e1f9ae.chunk.js",
+    "main.js.map": "/az-player-task/static/js/main.63e1f9ae.chunk.js.map",
+    "runtime-main.js": "/az-player-task/static/js/runtime-main.cb93048f.js",
+    "runtime-main.js.map": "/az-player-task/static/js/runtime-main.cb93048f.js.map",
+    "static/css/2.4a602cad.chunk.css": "/az-player-task/static/css/2.4a602cad.chunk.css",
+    "static/js/2.6d271fb1.chunk.js": "/az-player-task/static/js/2.6d271fb1.chunk.js",
+    "static/js/2.6d271fb1.chunk.js.map": "/az-player-task/static/js/2.6d271fb1.chunk.js.map",
+    "index.html": "/az-player-task/index.html",
+    "precache-manifest.ea18470a46418e046e300e31b9184d7f.js": "/az-player-task/precache-manifest.ea18470a46418e046e300e31b9184d7f.js",
+    "service-worker.js": "/az-player-task/service-worker.js",
+    "static/css/2.4a602cad.chunk.css.map": "/az-player-task/static/css/2.4a602cad.chunk.css.map",
+    "static/css/main.ffd6ba8f.chunk.css.map": "/az-player-task/static/css/main.ffd6ba8f.chunk.css.map",
+    "static/js/2.6d271fb1.chunk.js.LICENSE.txt": "/az-player-task/static/js/2.6d271fb1.chunk.js.LICENSE.txt",
+    "static/media/MusicConsole.scss": "/az-player-task/static/media/Play_active.d522478d.png",
+    "static/media/App.scss": "/az-player-task/static/media/bg_image.52d51b7d.jpg",
+    "static/media/cover-1.png": "/az-player-task/static/media/cover-1.8e344a79.png",
+    "static/media/cover.png": "/az-player-task/static/media/cover.aa246fdc.png",
+    "static/media/next_ico.svg": "/az-player-task/static/media/next_ico.908e77ad.svg",
+    "static/media/previous_ico.svg": "/az-player-task/static/media/previous_ico.61530e1d.svg",
+    "static/media/repeat_ico.svg": "/az-player-task/static/media/repeat_ico.f24e6532.svg",
+    "static/media/shuffle_ico.svg": "/az-player-task/static/media/shuffle_ico.9cca0f11.svg",
+    "static/media/slick-theme.css": "/az-player-task/static/media/slick.f97e3bbf.svg",
+    "static/media/unreleased_cover.png": "/az-player-task/static/media/unreleased_cover.a2195768.png",
+    "static/media/usertive_logo.svg": "/az-player-task/static/media/usertive_logo.2bd484f6.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cb93048f.js",
+    "static/css/2.4a602cad.chunk.css",
+    "static/js/2.6d271fb1.chunk.js",
+    "static/css/main.ffd6ba8f.chunk.css",
+    "static/js/main.63e1f9ae.chunk.js"
+  ]
+}
