@@ -2,7 +2,7 @@ import React, { useMemo, useState, useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { actuallyList, selectMusic, nextMusic } from "../musicsSlice";
 import getRandomMusic from "../../../helpers/getRandomMusic";
-import ProgressBar from "../../../components/ProgressBar";
+import Timer from "./Timer/Timer.jsx";
 
 const Audio = () => {
   const dispatch = useDispatch();
@@ -54,10 +54,11 @@ const Audio = () => {
   }, [musicProgress, playing, selectedIndex]);
 
   return (
-    <div>
-      <ProgressBar />
-      <h1>{percent}</h1>
-    </div>
+    <Timer
+      percent={percent}
+      musicProgress={musicProgress}
+      duration={selectedMusic.duration}
+    />
   );
 };
 
