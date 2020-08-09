@@ -2,6 +2,7 @@ import React, { useMemo, useState, useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { actuallyList, selectMusic, nextMusic } from "../musicsSlice";
 import getRandomMusic from "../../../helpers/getRandomMusic";
+import ProgressBar from "../../../components/ProgressBar";
 
 const Audio = () => {
   const dispatch = useDispatch();
@@ -54,6 +55,7 @@ const Audio = () => {
 
   return (
     <div>
+      <ProgressBar />
       <h1>{percent}</h1>
     </div>
   );
